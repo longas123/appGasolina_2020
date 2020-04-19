@@ -5,15 +5,16 @@ import BestFluel from './BestFluel';
 
 
 type Props = {};
-export default class App extends Component<Props>{
+export default class App extends Component{
   
+ 
 constructor(props){
   super(props)
   this.state = {gasolina:0, etanol:0, resultado:0}
   this.calcular =  this.calcular.bind(this) 
 }
 
-// Aqui vai ser feito o cálculo, não sei como usar essa função n arquivo BestFluel
+// Aqui vai ser feito o cálculo, não sei como usar essa função no arquivo BestFluel
 calcular(){
 
 }

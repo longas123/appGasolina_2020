@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
+
+
+
 
 // Método auxiliar 
 const calculate = (gasolina, etanol) => {
@@ -9,12 +13,12 @@ const calculate = (gasolina, etanol) => {
         return 'etanol';
     }
 }
-
+//O resultado deveria aparecer ali no this.state.resultado
  const BestFluel = (props) => {
   return (
     <View style={styles.container} >
       <Text style={styles.text}>Best Fluel Component</Text>
-      <Text style={styles.text} >O mais caro é :{calculate(props.gasolina, props.etanol)}</Text>
+      <Text style={styles.text} >O mais caro é :<text>this.state.resultado</text></Text>
       <Text style={styles.text} >Preço gasolina: {props.gasolina}</Text>
       <Text style={styles.text} >Preço etanol: {props.etanol}</Text>
     </View>
