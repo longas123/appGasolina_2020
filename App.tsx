@@ -9,13 +9,8 @@ export default class App extends Component<Props>{
   
 constructor(props){
   super(props)
-  this.state = {gasolina:0, etanol:0, resultado:0}
-  this.calcular =  this.calcular.bind(this) 
-}
-
-// Aqui vai ser feito o cálculo, não sei como usar essa função n arquivo BestFluel
-calcular(){
-
+  this.state = {gasolina:0, etanol:0, resultado: null}
+  // this.calcular =  this.calcular.bind(this)  <<< isso se resolve com arrow functions
 }
 
  render(){
@@ -23,12 +18,12 @@ calcular(){
     <View style={styles.container} >
         <View style={styles.entradas}>
           <Text style={styles.preco}>Preço Gasolina:</Text>
-          <TextInput placeholder="Gasolina" keyboardType="numeric" style={styles.input} onChangeText={(gasolina)=>this.setState(gasolina)} />
+          <TextInput placeholder="Gasolina" keyboardType="numeric" style={styles.input} onChangeText={(gasolina)=>this.setState({'gasolina':gasolina})} />
           <Text style={styles.preco}>Preço Etanol:</Text>
-          <TextInput placeholder="Etanol" keyboardType="numeric" style={styles.input}  onChangeText={(etanol)=>this.setState(etanol)}/>
+          <TextInput placeholder="Etanol" keyboardType="numeric" style={styles.input}  onChangeText={(etanol)=>this.setState({'etanol':etanol})}/>
         </View> 
         <View>
-          <TouchableOpacity style={styles.button} onPress={this.calcular}><Text>Calcular</Text></TouchableOpacity>
+          <BestFluel gasolina={this.state.gasolina} etanol={this.state.etanol} />
         </View>  
     </View>
   );
