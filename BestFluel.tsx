@@ -14,12 +14,12 @@ const calculate = (gasolina, etanol) => {
 }
 }
 //O resultado deveria aparecer ali no this.state.resultado
- const BestFluel = (props) => {
-  if(props.etanol > 0 && props.gasolina > 0){
+ const BestFluel = ({gasolina, etanol}) => {
+  if(etanol > 0 && gasolina > 0){
     return (
       <View style={styles.container} >
         <Text style={styles.text}>Vale mais a pena:</Text>
-        <Text style={styles.text} >{calculate(props.gasolina, props.etanol)}</Text>
+        <Text style={styles.text} >{calculate(gasolina, etanol)}</Text>
       </View>
     )
    }else{

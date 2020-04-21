@@ -5,14 +5,15 @@ import Header from './Header'
 import BestFluel from './BestFluel';
 
 
-
-export default class App extends Component{
+//Resolve o problema dos type indefinidos 
+type MyState = { gasolina: string, etanol: string };
+export default class App extends React.Component<{}, MyState>{
 
 
   constructor(props) {
     super(props);//Sem o super não tem acesso ao state, ele que chama a herança do Component
 
-    this.state = {gasolina:0, etanol:0}
+    this.state = {gasolina:'', etanol:''}
 
   }
 
@@ -23,9 +24,9 @@ render(){
         <Header />
         <View style={styles.entradas}>
           <Text style={styles.preco}>Preço Gasolina:</Text>
-          <TextInput placeholder="Gasolina" keyboardType="numeric" style={styles.input} onChangeText={(gasolina)=>this.setState({'gasolina':gasolina})} />
+          <TextInput placeholder="Gasolina" keyboardType="numeric" style={styles.input} onChangeText={(gasolina)=>this.setState({gasolina:gasolina})} />
           <Text style={styles.preco}>Preço Etanol:</Text>
-          <TextInput placeholder="Etanol" keyboardType="numeric" style={styles.input}  onChangeText={(etanol)=>this.setState({'etanol':etanol})}/>
+          <TextInput placeholder="Etanol" keyboardType="numeric" style={styles.input}  onChangeText={(etanol)=>this.setState({etanol:etanol})}/>
         </View> 
         <View>
           <BestFluel gasolina={this.state.gasolina} etanol={this.state.etanol} />
