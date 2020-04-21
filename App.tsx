@@ -1,35 +1,25 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput,  } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack'
 
 import BestFluel from './BestFluel';
 
 
-type Props = {};
+
 export default class App extends Component{
-  
- 
-constructor(props){
-  super(props)
-  this.state = {gasolina:0, etanol:0, resultado:0}
-  this.calcular =  this.calcular.bind(this) 
-}
-
-// Aqui vai ser feito o cálculo, não sei como usar essa função no arquivo BestFluel
-calcular(){
-
-}
-
- render(){
+render(){   
+  this.state = {gasolina:0, etanol:0}
   return (
     <View style={styles.container} >
         <View style={styles.entradas}>
           <Text style={styles.preco}>Preço Gasolina:</Text>
-          <TextInput placeholder="Gasolina" keyboardType="numeric" style={styles.input} onChangeText={(gasolina)=>this.setState(gasolina)} />
+          <TextInput placeholder="Gasolina" keyboardType="numeric" style={styles.input} onChangeText={(gasolina)=>this.setState({'gasolina':gasolina})} />
           <Text style={styles.preco}>Preço Etanol:</Text>
-          <TextInput placeholder="Etanol" keyboardType="numeric" style={styles.input}  onChangeText={(etanol)=>this.setState(etanol)}/>
+          <TextInput placeholder="Etanol" keyboardType="numeric" style={styles.input}  onChangeText={(etanol)=>this.setState({'etanol':etanol})}/>
         </View> 
         <View>
-          <TouchableOpacity style={styles.button} onPress={this.calcular}><Text>Calcular</Text></TouchableOpacity>
+          <BestFluel gasolina={this.state.gasolina} etanol={this.state.etanol} />
         </View>  
     </View>
   );
@@ -39,15 +29,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFAFA",
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center"
   },
   input: {
     height: 80,
     textAlign: "center",
-    fontSize:30,
-    marginTop: 5,
-    borderWidth: 1,
+    fontSize:50,
+    borderWidth: 1
   },
   button: {
     backgroundColor: "#FF7F00",

@@ -7,22 +7,24 @@ import { StyleSheet, Text, View } from 'react-native';
 
 // Método auxiliar 
 const calculate = (gasolina, etanol) => {
-    if(gasolina > etanol){
-        return 'gasolina';
-    }else{
-        return 'etanol';
-    }
+  if((etanol / gasolina) < 0.7){
+    return 'etanol';
+  }else{
+    return 'gasolina';
+}
 }
 //O resultado deveria aparecer ali no this.state.resultado
  const BestFluel = (props) => {
-  return (
-    <View style={styles.container} >
-      <Text style={styles.text}>Best Fluel Component</Text>
-      <Text style={styles.text} >O mais caro é :<text>this.state.resultado</text></Text>
-      <Text style={styles.text} >Preço gasolina: {props.gasolina}</Text>
-      <Text style={styles.text} >Preço etanol: {props.etanol}</Text>
-    </View>
-  );
+  if(props.etanol > 0 && props.gasolina > 0){
+    return (
+      <View style={styles.container} >
+        <Text style={styles.text}>Vale mais a pena:</Text>
+        <Text style={styles.text} >{calculate(props.gasolina, props.etanol)}</Text>
+      </View>
+    );
+   }else{
+     return null;
+   }
 }
 
 export default BestFluel;
@@ -31,15 +33,13 @@ export default BestFluel;
 // Estilos 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
-    backgroundColor: 'green',
-    width: '100%',
-    height: '50%'
+    alignSelf: "center",
+    backgroundColor: "#FFFAFA",
+    padding: 15,
   },
   text : {
-      color: '#fff',
+      color: "lightgray",
       textAlign: 'center',
-      marginVertical: 10,
       fontSize: 25
-  }
+  },
 });
