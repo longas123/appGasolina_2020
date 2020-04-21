@@ -21,9 +21,13 @@ const calculate = (gasolina, etanol) => {
         <Text style={styles.text}>Vale mais a pena:</Text>
         <Text style={styles.text} >{calculate(props.gasolina, props.etanol)}</Text>
       </View>
-    );
+    )
    }else{
-     return null;
+     return(
+    <View style={styles.container} >
+      <Text style={styles.text}>Descubra com o que vale mais a pena você abastecer!</Text>
+    </View>
+     )
    }
 }
 
@@ -33,13 +37,15 @@ export default BestFluel;
 // Estilos 
 const styles = StyleSheet.create({
   container: {
+    width: '90%',
     alignSelf: "center",
     backgroundColor: "#FFFAFA",
-    padding: 15,
+    borderWidth: 1,
+    padding: 15
   },
   text : {
-      color: "lightgray",
+      color: "#000",
       textAlign: 'center',
-      fontSize: 25
+      fontSize: 20
   },
 });
